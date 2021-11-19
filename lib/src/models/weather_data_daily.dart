@@ -64,21 +64,21 @@ class Daily {
 
 class Temp {
   Temp({
-    this.day,
-    this.night,
+    this.max,
+    this.min,
   });
 
-  var day;
-  var night;
+  double? max;
+  double? min;
 
   factory Temp.fromJson(Map<String, dynamic> json) => Temp(
-        day: json["day"].toStringAsFixed(1),
-        night: json["night"].toStringAsFixed(1),
+        max: json["max"],
+        min: json["min"],
       );
 
   Map<String, dynamic> toJson() => {
-        "day": day,
-        "night": night,
+        "max": max,
+        "min": min,
       };
 }
 

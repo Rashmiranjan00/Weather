@@ -16,14 +16,16 @@ class WeatherDataCurrent {
 }
 
 class Current {
-  Current({
-    this.dt,
-    this.windSpeed,
-    this.temp,
-    this.humidity,
-    this.clouds,
-    this.weather,
-  });
+  Current(
+      {this.dt,
+      this.windSpeed,
+      this.temp,
+      this.humidity,
+      this.clouds,
+      this.weather,
+      this.feelsLike,
+      this.uvIndex,
+      this.windDegree});
 
   int? dt;
   double? windSpeed;
@@ -31,6 +33,9 @@ class Current {
   int? humidity;
   int? clouds;
   List<Weather>? weather;
+  double? feelsLike;
+  int? uvIndex;
+  int? windDegree;
 
   factory Current.fromJson(Map<String, dynamic> json) => Current(
       dt: json['dt'],
@@ -38,6 +43,9 @@ class Current {
       humidity: json['humidity'],
       clouds: json['clouds'],
       temp: json['temp'],
+      feelsLike: json['feels_like'],
+      uvIndex: json['uvi'],
+      windDegree: json['wind_deg'],
       weather:
           List<Weather>.from(json['weather'].map((x) => Weather.fromJson(x))));
 
@@ -47,7 +55,10 @@ class Current {
         'humidity': humidity,
         'clouds': clouds,
         'temp': temp,
-        'weather': List<dynamic>.from(weather!.map((x) => x.toJson()))
+        'feelsLike': feelsLike,
+        'uvIndex': uvIndex,
+        'windDegree': windDegree,
+        'weather': List<dynamic>.from(weather!.map((x) => x.toJson())),
       };
 }
 
