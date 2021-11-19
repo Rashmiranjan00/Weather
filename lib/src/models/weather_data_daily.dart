@@ -68,8 +68,8 @@ class Temp {
     this.min,
   });
 
-  double? max;
-  double? min;
+  var max;
+  var min;
 
   factory Temp.fromJson(Map<String, dynamic> json) => Temp(
         max: json["max"],

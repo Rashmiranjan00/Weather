@@ -53,7 +53,7 @@ class HomePage extends StatelessWidget {
                     ),
                     Container(
                       height: 1,
-                      color: Color(0xffE4E4EE),
+                      color: const Color(0xffE4E4EE),
                     ),
                     Wind(
                         currentWeather:
