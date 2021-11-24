@@ -15,5 +15,9 @@ String selectIcon(String main) {
   if (main == 'Clear') {
     main = 'sunny';
   }
+  if (main == 'Mist') {
+    main = 'fog';
+  }
+  print(prefix + dorn + main.toLowerCase());
   return prefix + dorn + main.toLowerCase();
 }
