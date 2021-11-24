@@ -86,19 +86,16 @@ class Weather {
   Weather({
     this.main,
     this.description,
-    this.mainDesp,
     this.icon,
   });
 
   String? main;
   String? description;
-  String? mainDesp;
   String? icon;
 
   factory Weather.fromJson(Map<String, dynamic> json) => Weather(
         main: json["main"],
         description: json["description"],
-        mainDesp: json["main"],
         icon: json['icon'],
       );
 

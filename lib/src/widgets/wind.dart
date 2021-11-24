@@ -13,6 +13,9 @@ class Wind extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var direction =
+        getCardinalDirection('${currentWeather!.current!.windDegree}');
+
     return Column(
       children: [
         Container(
@@ -49,7 +52,7 @@ class Wind extends StatelessWidget {
                   RichText(
                     text: TextSpan(
                       children: <TextSpan>[
-                        TextSpan(
+                        const TextSpan(
                           text: 'Direction',
                           style: TextStyle(
                             fontFamily: 'MohrRounded',
@@ -60,8 +63,8 @@ class Wind extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text: ' North',
-                          style: TextStyle(
+                          text: ' $direction',
+                          style: const TextStyle(
                             fontFamily: 'MohrRounded',
                             fontWeight: FontWeight.w400,
                             fontSize: 14,
@@ -114,5 +117,21 @@ class Wind extends StatelessWidget {
         ),
       ],
     );
+  }
+
+  getCardinalDirection(String angle) {
+    const directions = [
+      'North',
+      'NE',
+      'East',
+      'SE',
+      'South',
+      'SW',
+      'West',
+      'NW'
+    ];
+    // return directions[Math.round(angle / 45) % 8];
+    return directions[
+        int.parse((num.parse(angle) / 45).toStringAsFixed(0)) % 8];
   }
 }

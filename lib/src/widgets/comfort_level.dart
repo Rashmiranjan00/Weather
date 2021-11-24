@@ -123,8 +123,7 @@ class ComfortLevel extends StatelessWidget {
                           ),
                         ),
                         TextSpan(
-                          text:
-                              '${currentWeather!.current!.feelsLike!.toInt()}',
+                          text: '${currentWeather!.current!.uvIndex!.toInt()}',
                           style: const TextStyle(
                             fontFamily: 'MohrRounded',
                             fontWeight: FontWeight.w400,

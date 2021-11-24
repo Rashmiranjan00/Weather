@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+import 'package:weather_icons/weather_icons.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+
 import 'package:weather/src/models/weather_data_hourly.dart';
 import 'package:weather/src/controller/global_controller.dart';
+import 'package:weather/src/utils/weather_icons.dart';
 
 class HourlyList extends StatelessWidget {
   final List<Hourly>? hourlyWeather;
@@ -65,6 +67,7 @@ class HourlyList extends StatelessWidget {
                       day: hourlyWeather![index].dt,
                       weatherdesp:
                           hourlyWeather![index].weather![0].description,
+                      weathermain: hourlyWeather![index].weather![0].main,
                     ),
                   ),
                 ));
@@ -74,13 +77,14 @@ class HourlyList extends StatelessWidget {
 }
 
 class HourlyDetails extends StatelessWidget {
-  final temp, day, weatherdesp;
+  final temp, day, weatherdesp, weathermain;
 
   const HourlyDetails({
     Key? key,
     this.temp,
     this.day,
     this.weatherdesp,
+    this.weathermain,
   }) : super(key: key);
 
   String getTime(var day) {
@@ -107,8 +111,12 @@ class HourlyDetails extends StatelessWidget {
         Container(
           height: 40,
           width: 40,
-          child: SvgPicture.asset(
-            'assets/icons/chuvacomraio.svg',
+          child: BoxedIcon(
+            WeatherIcons.fromString(selectIcon('$weathermain'),
+                // Fallback is optional, throws if not found, and not supplied.
+                fallback: WeatherIcons.na),
+            size: 20,
+            color: const Color.fromARGB(255, 189, 188, 225),
           ),
         ),
         Container(

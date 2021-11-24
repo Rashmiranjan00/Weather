@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 import 'package:weather/src/models/weather_data_daily.dart';
+import 'package:weather/src/utils/weather_icons.dart';
 
 class DailyList extends StatelessWidget {
   final List<Daily>? dailyWeather;
@@ -47,8 +48,13 @@ class DailyList extends StatelessWidget {
                       Container(
                         height: 30,
                         width: 30,
-                        child: SvgPicture.asset(
-                          'assets/icons/nuvemcomsol.svg',
+                        child: BoxedIcon(
+                          WeatherIcons.fromString(
+                              selectIcon(
+                                  '${dailyWeather![index].weather![0].main}'),
+                              // Fallback is optional, throws if not found, and not supplied.
+                              fallback: WeatherIcons.na),
+                          size: 20,
                           color: const Color(0xff83839D),
                         ),
                       ),
