@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:weather_icons/weather_icons.dart';
 
 import 'package:weather/src/models/weather_data_current.dart';
-import 'package:weather/src/utils/weather_icons.dart';
 
 class TemperatureArea extends StatelessWidget {
   final Current? currentWeather;
@@ -17,18 +15,10 @@ class TemperatureArea extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        // Image.asset(
-        //   'assets/weathers/rain-cloud-sun@2x.png',
-        //   height: 120,
-        // ),
-        BoxedIcon(
-          WeatherIcons.fromString(
-              selectIcon('${currentWeather?.weather![0].main}'),
-              // Fallback is optional, throws if not found, and not supplied.
-              fallback: WeatherIcons.na),
-          size: 80,
-          // color: Colors.purple.shade200,
-          color: const Color.fromARGB(255, 131, 110, 255),
+        Image.asset(
+          'assets/weathers/${currentWeather?.weather![0].icon}.png',
+          height: 80,
+          width: 80,
         ),
         Container(
           height: 50,

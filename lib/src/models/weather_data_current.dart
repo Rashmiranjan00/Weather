@@ -34,7 +34,7 @@ class Current {
   int? clouds;
   List<Weather>? weather;
   double? feelsLike;
-  double? uvIndex;
+  num? uvIndex;
   int? windDegree;
 
   factory Current.fromJson(Map<String, dynamic> json) => Current(
